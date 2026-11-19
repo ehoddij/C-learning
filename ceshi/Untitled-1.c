@@ -1,20 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 
-// 定义最大学生数量
 #define MAX_STUDENTS 100
 
-// 定义学生结构体
 struct Student {
-    int id;             // 学号
-    char name[50];      // 姓名
-    float score;        // 成绩
+    int id;             
+    char name[50];      
+    float score;        
 };
 
-// 全局变量，用来存储学生列表
 struct Student students[MAX_STUDENTS];
-int studentCount = 0;   // 当前学生总数
-// 函数声明
+int studentCount = 0; 
 void addStudent();
 void showAllStudents();
 void findTopStudent();
@@ -22,7 +18,6 @@ void findTopStudent();
 int main() {
     int choice;
 
-    // 简单的菜单循环
     while (1) {
         printf("\n========== 学生成绩管理系统 ==========\n");
         printf("1. 录入学生信息\n");
@@ -31,10 +26,7 @@ int main() {
         printf("0. 退出系统\n");
         printf("=====================================\n");
         printf("请输入您的选择 (0-3): ");
-        
-        // 读取用户输入
         if (scanf("%d", &choice) != 1) {
-            // 如果输入的不是数字，清空缓冲区防止死循环
             while(getchar() != '\n'); 
             printf("输入无效，请输入数字！\n");
             continue;
@@ -60,7 +52,6 @@ int main() {
     return 0;
 }
 
-// 功能1：添加学生
 void addStudent() {
     if (studentCount >= MAX_STUDENTS) {
         printf("系统已满，无法添加更多学生！\n");
@@ -76,15 +67,13 @@ void addStudent() {
     
     printf("请输入成绩 (0-100): ");
     scanf("%f", &s.score);
-
-    // 将新学生加入数组
     students[studentCount] = s;
     studentCount++;
 
     printf(">>> 成功添加学生: %s\n", s.name);
 }
 
-// 功能2：显示所有学生
+
 void showAllStudents() {
     if (studentCount == 0) {
         printf(">>> 暂无学生数据，请先录入。\n");
@@ -102,7 +91,6 @@ void showAllStudents() {
     }
 }
 
-// 功能3：查找最高分
 void findTopStudent() {
     if (studentCount == 0) {
         printf(">>> 暂无学生数据。\n");
